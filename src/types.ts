@@ -1,5 +1,3 @@
-export module namespace {
-
     export interface Language {
         name: string;
         code: string;
@@ -24,6 +22,4 @@ export module namespace {
     export interface RootObject {
         data: Data;
     }
-
-}
 
