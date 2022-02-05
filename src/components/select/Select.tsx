@@ -6,6 +6,7 @@ import SelectUnstyled, {
 import OptionUnstyled, { optionUnstyledClasses } from '@mui/base/OptionUnstyled';
 import { styled } from '@mui/system';
 import { PopperUnstyled } from '@mui/base';
+import Cards from '../cards/Cards';
 
 const StyledButton = styled('button')`
   font-family: IBM Plex Sans, sans-serif;
@@ -117,7 +118,8 @@ const CustomSelect = React.forwardRef(function CustomSelect(
 
 export default function Select() {
   return (
-    <CustomSelect>
+    <div>
+        <CustomSelect>
       {countries.map((c) => (
         <StyledOption key={c.code} value={c.code}>
           <img
@@ -130,7 +132,12 @@ export default function Select() {
           {c.label} ({c.code}) +{c.phone}
         </StyledOption>
       ))}
-    </CustomSelect>
+        </CustomSelect>
+        
+        
+        <Cards/>
+    </div>
+    
   );
 }
 
