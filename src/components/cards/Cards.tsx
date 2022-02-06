@@ -4,8 +4,14 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
+import { Continent } from '../../types';
+import { FunctionComponent } from 'react';
 
-export default function Cards() {
+ const Cards: FunctionComponent<Continent> =(props)=> {
+    const {country} = props
+    console.log(country)
+
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
@@ -27,9 +33,10 @@ export default function Cards() {
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          Share
+          Details
         </Button>
       </CardActions>
     </Card>
   );
 }
+export default Cards

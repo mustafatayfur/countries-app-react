@@ -8,6 +8,7 @@ import { styled } from '@mui/system';
 import { PopperUnstyled } from '@mui/base';
 import Cards from '../cards/Cards';
 import { useContinentContext } from '../../context/ContinentContext'
+import { type } from 'os';
 // import {Continent} from '../../types'
 
 const StyledButton = styled('button')`
@@ -118,15 +119,23 @@ const CustomSelect = React.forwardRef(function CustomSelect(
   return <SelectUnstyled {...props} ref={ref} components={components} />;
 });
 
-export default function Select() {
-  const {continents} = useContinentContext()
-  // const newContinents = continents
-  console.log(continents)
+type InputProps={
+  value : string
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>)=> void
+}
 
+export default function Select(props: InputProps) {
+  const {continents} = useContinentContext()
+  console.log(continents)
+  const [continent, setContinent] = React.useState();
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>{
+    setContinent(event.target.value)
+  }
  
   return (
     <div>
-        <CustomSelect>
+        <CustomSelect onChange={handleChange}>
       {continents?.map((continent: any,index: any) => (
       
           <StyledOption key={index} value={continent}>
@@ -136,8 +145,12 @@ export default function Select() {
       ))}
         </CustomSelect>
         
+        {continent && (
+            continent.countries.map((country:any, index:any)=>{
+              <Cards key={index} country={country} />
+            })
+        )}
         
-        <Cards/>
     </div>
     
   );
