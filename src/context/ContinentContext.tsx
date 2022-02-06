@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { Data }from '../types'
 
 
-export const ContinentContext = createContext<Data[]>([]);;
+export const ContinentContext = createContext({});;
 
 export function useContinentContext() {
     return useContext(ContinentContext);
@@ -25,7 +25,7 @@ const LAUNCHES_QUERY = `
 const ContinentContextProvider = (
     props:React.PropsWithChildren<{}>
 ): JSX.Element => {
-    const [continents, setContinents] = useState([])
+    const [continents, setContinents] = useState<Data[]>([])
 
     useEffect(()=> {
         fetch('https://countries.trevorblades.com/graphql', {
@@ -35,11 +35,13 @@ const ContinentContextProvider = (
         }).then(response => response.json())
         .then(data => setContinents(data))
     },[])
-
+    console.log(continents)
     const values = {
-        continents
-      };
+        continents,
+        
+    };
 
-      return <ContinentContext.Provider value={values}>{children}</ContinentContext.Provider>;
+
+      return <ContinentContext.Provider value={values}>{props.children}</ContinentContext.Provider>;
 }
 export default ContinentContextProvider;
