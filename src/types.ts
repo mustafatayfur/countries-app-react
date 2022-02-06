@@ -1,25 +1,42 @@
-    export interface Language {
-        name: string;
-        code: string;
-        native: string;
-    }
 
-    export interface CountryType {
-        name: string;
-        capital: string;
-        emojiU: string;
-        languages: Language[];
-    }
 
-    export interface Continent {
-        countries: CountryType[];
-    }
+            export interface Language {
+                name: string;
+            }
+        
+            export interface Country {
+                name: string;
+                capital: string;
+                emojiU: string;
+                languages: Language[];
+            }
+        
+            export interface Continent {
+                name: string;
+                countries: Country[];
+            }
+        
+            export interface Data {
+                continents: Continent[];
+            }
+        
+            export interface RootObject {
+                data: Data;
+            }
+        
+  
+    // export interface Data{
+    //     continents: {
+    //             countries:{
+    //                 name: string;
+    //                 capital: string;
+    //                 emojiU: string;
+    //                 languages:{
+    //                   name: string
+    //                 }[];
+    //             }[];
+    //     }[];
+    // }
 
-    export interface Data {
-        continents: Continent[];
-    }
 
-    export interface RootObject {
-        data: Data;
-    }
 

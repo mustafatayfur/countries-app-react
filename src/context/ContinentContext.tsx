@@ -1,8 +1,13 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { Data }from '../types'
+import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import {Continent,Data} from '../types'
+
+interface IDataProps {
+    children: ReactNode
+}
 
 
-export const ContinentContext = createContext({});;
+
+export const ContinentContext = createContext<Data>({} as Data);
 
 export function useContinentContext() {
     return useContext(ContinentContext);
@@ -10,22 +15,23 @@ export function useContinentContext() {
 
 const LAUNCHES_QUERY = `
 {
-    continents{
-      countries{
-        name
-        capital
-        emojiU
-        languages{
+        continents{
           name
+          countries{
+            name
+            capital
+            emojiU
+            languages{
+              name
+            }
+          }
         }
-      }
     }
-  } 
 `
 const ContinentContextProvider = (
-    props:React.PropsWithChildren<{}>
-): JSX.Element => {
-    const [continents, setContinents] = useState<Data[]>([])
+    { children }: IDataProps 
+) => {
+    const [continents, setContinents] = useState<Continent[]>([])
 
     useEffect(()=> {
         fetch('https://countries.trevorblades.com/graphql', {
@@ -33,15 +39,13 @@ const ContinentContextProvider = (
             headers: {"Content-Type" : "application/json"},
             body: JSON.stringify({query: LAUNCHES_QUERY })
         }).then(response => response.json())
-        .then(data => setContinents(data))
+        .then(data => setContinents(data.data.continents))
     },[])
     console.log(continents)
-    const values = {
-        continents,
-        
-    };
+   
+    
 
 
-      return <ContinentContext.Provider value={values}>{props.children}</ContinentContext.Provider>;
+      return <ContinentContext.Provider value={{continents}}>{children}</ContinentContext.Provider>;
 }
 export default ContinentContextProvider;
