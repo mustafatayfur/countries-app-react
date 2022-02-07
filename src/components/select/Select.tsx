@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import * as React from 'react';
 import SelectUnstyled, {
   SelectUnstyledProps,
@@ -8,8 +9,9 @@ import { styled } from '@mui/system';
 import { PopperUnstyled } from '@mui/base';
 import Cards from '../cards/Cards';
 import { useContinentContext } from '../../context/ContinentContext'
-import { type } from 'os';
-// import {Continent} from '../../types'
+import {Continent} from '../../types'
+
+
 
 const StyledButton = styled('button')`
   font-family: IBM Plex Sans, sans-serif;
@@ -106,10 +108,10 @@ const StyledPopper = styled(PopperUnstyled)`
 `;
 
 const CustomSelect = React.forwardRef(function CustomSelect(
-  props: SelectUnstyledProps<number>,
+  props: SelectUnstyledProps<any>,
   ref: React.ForwardedRef<any>,
 ) {
-  const components: SelectUnstyledProps<number>['components'] = {
+  const components: SelectUnstyledProps<any>['components'] = {
     Root: StyledButton,
     Listbox: StyledListbox,
     Popper: StyledPopper,
@@ -119,37 +121,37 @@ const CustomSelect = React.forwardRef(function CustomSelect(
   return <SelectUnstyled {...props} ref={ref} components={components} />;
 });
 
-type InputProps={
-  value : string
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>)=> void
-}
-
-export default function Select(props: InputProps) {
+export default function Select(props:{InputProps:string[]}) {
   const {continents} = useContinentContext()
   console.log(continents)
-  const [continent, setContinent] = React.useState();
+  const [newContinent, setNewContinent] = React.useState<Continent[]>([]);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>{
-    setContinent(event.target.value)
+  const handleChange = (event: any) =>{
+    setNewContinent(Array.isArray(event)?event:[])
   }
- 
+ console.log(newContinent)
   return (
     <div>
-        <CustomSelect onChange={handleChange}>
-      {continents?.map((continent: any,index: any) => (
-      
-          <StyledOption key={index} value={continent}>
-              {continent.name} 
-          </StyledOption>
-        
-      ))}
+        <CustomSelect 
+        onChange={handleChange}
+        >
+      {continents?.map((continent: any,index: any) => {
+          
+               return(
+                <StyledOption key={index} value={continent.countries}
+                >
+                    {continent.name} 
+                </StyledOption> 
+               )       
+            })}
         </CustomSelect>
         
-        {continent && (
-            continent.countries.map((country:any, index:any)=>{
-              <Cards key={index} country={country} />
-            })
+        {newContinent && (
+            newContinent?.map((country:any, index:any)=>(
+              <Cards country={country} key={index}/>
+            ))
         )}
+      
         
     </div>
     

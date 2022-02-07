@@ -4,7 +4,7 @@ import Select from '../../components/select/Select';
 const Countries = () => {
   return (
     <div>
-          <Select/>
+          <Select InputProps={[]}/>
     </div>
   );
 };

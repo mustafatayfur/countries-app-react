@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState, ReactNode } from "react
 import {Continent,Data} from '../types'
 
 interface IDataProps {
-    children: ReactNode
+    children: any
 }
 
 

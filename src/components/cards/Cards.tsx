@@ -6,33 +6,34 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import { Continent } from '../../types';
 import { FunctionComponent } from 'react';
+import { useNavigate } from 'react-router-dom';
 
- const Cards: FunctionComponent<Continent> =(props)=> {
-    const {country} = props
-    console.log(country)
+
+ const Cards: FunctionComponent<Continent> =({country}:any)=> {
+    const navigate = useNavigate()
+console.log(country)
 
 
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
+      <CardActionArea>7
         <CardMedia
           component="img"
           height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
+          image={country.emojiU}
           alt="green iguana"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
+            {country.name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+          {country.capital? country.capital : 'Capital is not defined'}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" onClick={() => navigate('/samelanguages')}>
           Details
         </Button>
       </CardActions>

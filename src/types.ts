@@ -13,7 +13,7 @@
         
             export interface Continent {
                 name: string;
-                countries: Country[];
+                countries: any
             }
         
             export interface Data {
