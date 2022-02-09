@@ -16,7 +16,7 @@ function App() {
             <Route path="/" element={<Home/>} />
             <Route path="/chart" element={<Chart/>} />
             <Route path="/countries" element={<Countries/>} />
-            <Route path="/samelanguages" element={<SameLanguages/>} />
+            <Route path="/samelanguages" element={<SameLanguages languages={[]}/>} />
         </Routes>
     </Router>
   );

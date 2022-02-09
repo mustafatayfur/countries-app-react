@@ -1,3 +1,4 @@
+import { Language } from "@mui/icons-material";
 
 
             export interface Language {
@@ -13,7 +14,7 @@
         
             export interface Continent {
                 name: string;
-                countries: any
+                country: Array<any>;
             }
         
             export interface Data {
@@ -27,6 +28,7 @@
   
     // export interface Data{
     //     continents: {
+    //             name
     //             countries:{
     //                 name: string;
     //                 capital: string;

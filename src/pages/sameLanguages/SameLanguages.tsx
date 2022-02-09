@@ -1,9 +1,10 @@
-import React from 'react';
+import Detail from "../../components/detail/Detail";
 
-const SameLanguages = () => {
+
+const SameLanguages = ({languages}:{languages:[]}) => {
   return (
     <div>
-      same languages
+      <Detail languages={languages}  />
     </div>
   )
 };

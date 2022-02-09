@@ -13,6 +13,8 @@ import {Continent} from '../../types'
 
 
 
+
+
 const StyledButton = styled('button')`
   font-family: IBM Plex Sans, sans-serif;
   font-size: 0.875rem;
@@ -121,7 +123,8 @@ const CustomSelect = React.forwardRef(function CustomSelect(
   return <SelectUnstyled {...props} ref={ref} components={components} />;
 });
 
-export default function Select(props:{InputProps:string[]}) {
+
+export default function Select() {
   const {continents} = useContinentContext()
   console.log(continents)
   const [newContinent, setNewContinent] = React.useState<Continent[]>([]);
@@ -130,6 +133,7 @@ export default function Select(props:{InputProps:string[]}) {
     setNewContinent(Array.isArray(event)?event:[])
   }
  console.log(newContinent)
+
   return (
     <div>
         <CustomSelect 
@@ -147,8 +151,9 @@ export default function Select(props:{InputProps:string[]}) {
         </CustomSelect>
         
         {newContinent && (
-            newContinent?.map((country:any, index:any)=>(
-              <Cards country={country} key={index}/>
+            newContinent?.map((item, index:any)=>(
+              
+              <Cards item={item} key={item.name}/>
             ))
         )}
       

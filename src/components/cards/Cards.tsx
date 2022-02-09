@@ -4,39 +4,48 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
-import { Continent } from '../../types';
+import { Country } from '../../types';
 import { FunctionComponent } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Detail from '../detail/Detail';
+import SameLanguages from '../../pages/sameLanguages/SameLanguages';
 
 
- const Cards: FunctionComponent<Continent> =({country}:any)=> {
+ const Cards =({item}:{item:any})=> {
     const navigate = useNavigate()
-console.log(country)
+      console.log(item)
+    
+    
 
 
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>7
+      <CardActionArea>
+       
         <CardMedia
           component="img"
           height="140"
-          image={country.emojiU}
+          image={item.emojiU}
           alt="green iguana"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {country.name}
+            {item.name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-          {country.capital? country.capital : 'Capital is not defined'}
+          {item.capital? item.capital : 'Capital is not defined'}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary" onClick={() => navigate('/samelanguages')}>
-          Details
+        
+          Detail
         </Button>
       </CardActions>
+      
+      <SameLanguages languages={item.languages} />
+      
     </Card>
   );
 }
