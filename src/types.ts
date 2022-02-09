@@ -13,6 +13,7 @@ import { Language } from "@mui/icons-material";
             }
         
             export interface Continent {
+                countries: any;
                 name: string;
                 country: Array<any>;
             }

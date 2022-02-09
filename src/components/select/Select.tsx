@@ -153,7 +153,7 @@ export default function Select() {
         {newContinent && (
             newContinent?.map((item, index:any)=>(
               
-              <Cards item={item} key={item.name}/>
+              <Cards item={item} key={index}/>
             ))
         )}
       

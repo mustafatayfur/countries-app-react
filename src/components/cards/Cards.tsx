@@ -15,9 +15,6 @@ import SameLanguages from '../../pages/sameLanguages/SameLanguages';
     const navigate = useNavigate()
       console.log(item)
     
-    
-
-
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
@@ -44,7 +41,7 @@ import SameLanguages from '../../pages/sameLanguages/SameLanguages';
         </Button>
       </CardActions>
       
-      <SameLanguages languages={item.languages} />
+      <SameLanguages languages={item.languages}/>
       
     </Card>
   );
