@@ -4,7 +4,7 @@ const SameLanguages = () => {
  
   return (
     <div>
-      <Detail languages={undefined} />
+      <Detail />
     </div>
   )
 };

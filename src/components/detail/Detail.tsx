@@ -4,10 +4,11 @@ import { Country,Language } from '../../types';
 import { useContinentContext } from '../../context/ContinentContext'
 import { useLocation } from 'react-router-dom';
  
-const Detail  = ({languages}:{languages: any}) => {
+const Detail  = () => {
 
-  const location= useLocation()
-  console.log(location.state)
+  const  {state}: any= useLocation()
+  const {item}: {item: Country} = state
+  console.log(item.languages[0].name)
   // const recipe = location.state.item
 
     const {continents } = useContinentContext()
@@ -45,3 +46,7 @@ const Detail  = ({languages}:{languages: any}) => {
 };
 
 export default Detail;
+function item(item: any) {
+  throw new Error('Function not implemented.');
+}
+
