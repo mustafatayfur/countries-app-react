@@ -17,24 +17,29 @@ export default function Chart() {
   // const [name, setName] = useState("")
   // const [uv,setUv] = useState(0)
   const {continents} = useContinentContext()
-  let data = [
-    {
-      name: "",
-      uv: 45,
-    },
-  ];
-  // const data = Object.key(continents).map(key => {
-  //   return
-  // })
-   
+  console.log(continents)
+  
+  let data: any = [];
+ 
+ 
 
   return (
     <div>
       {
+        continents.map((item,index)=> {
+          let my_object = {
+            name: "",
+            numberOfCountry: 0
+          }
+          my_object.name = item.name
+          my_object.numberOfCountry = item.countries.length
+          
+          data.push(my_object)
+        })
         
       }
           <BarChart
-      width={500}
+      width={800}
       height={300}
       data={data}
       margin={{
@@ -50,9 +55,13 @@ export default function Chart() {
       <Tooltip />
       <Legend />
       
-      <Bar dataKey="uv" fill="#82ca9d" />
+      <Bar dataKey="numberOfCountry" fill="#82ca9d" />
     </BarChart>
 
     </div>
   );
+}
+
+function key(key: any, name: string, length: any) {
+  throw new Error('Function not implemented.');
 }
