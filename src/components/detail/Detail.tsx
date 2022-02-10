@@ -1,5 +1,3 @@
-/* eslint-disable array-callback-return */
-import { FunctionComponent, Key, ReactChild, ReactFragment, ReactPortal } from 'react';
 import { Country } from '../../types';
 import { useContinentContext } from '../../context/ContinentContext'
 import { useLocation } from 'react-router-dom';
@@ -44,14 +42,6 @@ const Detail  = () => {
       })}
   </div>
   );
-};
-
+}
 export default Detail;
-function item(item: any) {
-  throw new Error('Function not implemented.');
-}
-
-function country(country: any) {
-  throw new Error('Function not implemented.');
-}
 

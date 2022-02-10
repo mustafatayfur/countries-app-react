@@ -1,4 +1,4 @@
-// import "./styles.css";
+import "./Chart.css";
 import { useContinentContext } from '../../context/ContinentContext'
 import {
   BarChart,
@@ -9,13 +9,11 @@ import {
   Tooltip,
   Legend
 } from "recharts";
-import { useState } from "react";
+
 
 
 
 export default function Chart() {
-  // const [name, setName] = useState("")
-  // const [uv,setUv] = useState(0)
   const {continents} = useContinentContext()
   console.log(continents)
   
@@ -24,9 +22,10 @@ export default function Chart() {
  
 
   return (
-    <div>
+    <div className='chart'>
       <h2>Country numbers of continents</h2>
       {
+        // eslint-disable-next-line array-callback-return
         continents.map((item,index)=> {
           let my_object = {
             name: "",
@@ -63,6 +62,4 @@ export default function Chart() {
   );
 }
 
-function key(key: any, name: string, length: any) {
-  throw new Error('Function not implemented.');
-}
+

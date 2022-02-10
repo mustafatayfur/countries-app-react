@@ -1,4 +1,5 @@
 /* eslint-disable array-callback-return */
+import './Select.css'
 import * as React from 'react';
 import SelectUnstyled, {
   SelectUnstyledProps,
@@ -135,7 +136,7 @@ export default function Select() {
  console.log(newContinent)
 
   return (
-    <div>
+    <div className='dropdown'>
         <CustomSelect 
         onChange={handleChange}
         >
@@ -150,12 +151,15 @@ export default function Select() {
             })}
         </CustomSelect>
         
+        <div className="countryList">
         {newContinent && (
             newContinent?.map((item, index:any)=>(
               
               <Cards item={item} key={index}/>
             ))
         )}
+
+        </div>
       
         
     </div>

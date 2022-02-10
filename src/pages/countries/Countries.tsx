@@ -5,7 +5,10 @@ const Countries = () => {
   return (
     <div className='countries'>
         <h3>Choose a continent</h3>
-          <Select />
+        <div className='select'>
+            <Select />
+        </div>
+          
     </div>
   );
 };

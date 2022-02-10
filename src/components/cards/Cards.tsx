@@ -4,11 +4,9 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
-import { Country } from '../../types';
-import { FunctionComponent } from 'react';
+
 import { useNavigate } from 'react-router-dom';
-import Detail from '../detail/Detail';
-import SameLanguages from '../../pages/sameLanguages/SameLanguages';
+
 
 
  const Cards =({item}:{item:any})=> {
@@ -16,7 +14,7 @@ import SameLanguages from '../../pages/sameLanguages/SameLanguages';
       console.log(item)
     
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ width: 300, margin:3 }}>
       <CardActionArea>
   
         <CardMedia
