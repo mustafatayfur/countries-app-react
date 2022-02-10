@@ -1,13 +1,10 @@
-import { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import {Continent,Country,Data, Language} from '../types'
+import { createContext, useContext, useEffect, useState } from "react";
+import {Continent,Data} from '../types'
 
 interface IDataProps {
     children: any
 }
-interface setLang {
-  setLanguage1: (input: Language) => void
-  language1: Language[]
-}
+
 
 
 
@@ -36,7 +33,7 @@ const ContinentContextProvider = (
     { children }: IDataProps 
 ) => {
     const [continents, setContinents] = useState<Continent[]>([])
-    const [languages1, setLanguages1] = useState<setLang>()
+    
 
     useEffect(()=> {
         fetch('https://countries.trevorblades.com/graphql', {
