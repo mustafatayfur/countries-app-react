@@ -25,14 +25,15 @@ export default function Chart() {
 
   return (
     <div>
+      <h2>Country numbers of continents</h2>
       {
         continents.map((item,index)=> {
           let my_object = {
             name: "",
-            numberOfCountry: 0
+            countryNumber: 0
           }
           my_object.name = item.name
-          my_object.numberOfCountry = item.countries.length
+          my_object.countryNumber = item.countries.length
           
           data.push(my_object)
         })
@@ -55,7 +56,7 @@ export default function Chart() {
       <Tooltip />
       <Legend />
       
-      <Bar dataKey="numberOfCountry" fill="#82ca9d" />
+      <Bar dataKey="countryNumber" fill="#82ca9d" />
     </BarChart>
 
     </div>
