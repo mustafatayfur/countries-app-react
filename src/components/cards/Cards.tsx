@@ -41,7 +41,7 @@ import SameLanguages from '../../pages/sameLanguages/SameLanguages';
         </Button>
       </CardActions>
       
-      <SameLanguages languages={item.languages}/>
+      {/* <SameLanguages languages={item.languages}/> */}
       
     </Card>
   );

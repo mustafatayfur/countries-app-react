@@ -7,14 +7,17 @@ import { useNavigate } from 'react-router-dom';
 export default function Home() {
 
   const navigate = useNavigate();
-  const HandleClick = ()=>{
+  const HandleCountriesClick = ()=>{
     navigate('/countries')
+  }
+  const HandleChartClick = ()=>{
+    navigate('/chart')
   }
 
   return (
     <ButtonGroup variant="contained" aria-label="outlined primary button group" className='home'>
-      <Button onClick={HandleClick}>CONTINENTS</Button>
-      <Button>CHART OF THE CONTINENTS</Button>
+      <Button onClick={HandleCountriesClick}>CONTINENTS</Button>
+      <Button onClick={HandleChartClick}>CHART OF THE CONTINENTS</Button>
     </ButtonGroup>
   );
 }

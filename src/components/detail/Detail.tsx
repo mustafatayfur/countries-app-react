@@ -1,33 +1,38 @@
 /* eslint-disable array-callback-return */
 import { FunctionComponent, Key, ReactChild, ReactFragment, ReactPortal } from 'react';
-import { Country } from '../../types';
+import { Country,Language } from '../../types';
 import { useContinentContext } from '../../context/ContinentContext'
  
 const Detail  = ({languages}:{languages: any}) => {
     const {continents} = useContinentContext()
-    console.log(continents)
+    const newContinents = continents.map((continent)=> continent.countries)
+    console.log(newContinents)
+    const newName = continents.map((continent)=> continent.name)
+    console.log(newName)
+    const newCountries = newContinents.map((countries)=> countries)
+    console.log(newCountries)
+
     
-    const newLanguage = languages[0].name
-    console.log(newLanguage)
+    // const newLanguage = languages[0]
+    // console.log(newLanguage)
     
   return (
   <div>
+      {newName.map((name1, index1)=>{
+          return (
+            <ul key={index1}>{name1}</ul>
+          )
+      })}
+      
         {
-            continents.map((continent,index)=> {
-                return(
-                   <ul key={index}>
-                       {
-                           continent.countries.map((country: { languages: { name: string; }[]; }, index: any)=>{
-                               console.log(country.languages[0].name)
-                               return(
-                                
-                                   <li key={index}>{country.languages[0].name}</li>
-                               )
-                           })
-                       }
-                   </ul>
-                )
-            })
+
+            // newContinents.map((countries)=> {
+            //     console.log(countries)
+            // }
+                
+            //.filter((country:  { languages: { name: string; }[] })=>
+            //country.languages[0].name === newLanguage
+    
         }
   </div>
   );

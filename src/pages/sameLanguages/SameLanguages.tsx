@@ -1,10 +1,10 @@
 import Detail from "../../components/detail/Detail";
 
-
-const SameLanguages = ({languages}:{languages:[]}) => {
+const SameLanguages = () => {
+ 
   return (
     <div>
-      <Detail languages={languages}  />
+      <Detail languages={undefined} />
     </div>
   )
 };
