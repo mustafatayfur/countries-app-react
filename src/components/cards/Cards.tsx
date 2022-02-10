@@ -18,12 +18,12 @@ import SameLanguages from '../../pages/sameLanguages/SameLanguages';
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
-       
+  
         <CardMedia
           component="img"
           height="140"
-          image={item.emojiU}
-          alt="green iguana"
+          image= {item.emojiU}
+          alt="flag"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
@@ -35,14 +35,11 @@ import SameLanguages from '../../pages/sameLanguages/SameLanguages';
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" onClick={() => navigate('/samelanguages')}>
-        
+        <Button size="small" color="primary" onClick={() => navigate('/samelanguages', {state:{item}})}>
           Detail
         </Button>
       </CardActions>
-      
-      {/* <SameLanguages languages={item.languages}/> */}
-      
+       
     </Card>
   );
 }

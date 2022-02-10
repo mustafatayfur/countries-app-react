@@ -2,9 +2,15 @@
 import { FunctionComponent, Key, ReactChild, ReactFragment, ReactPortal } from 'react';
 import { Country,Language } from '../../types';
 import { useContinentContext } from '../../context/ContinentContext'
+import { useLocation } from 'react-router-dom';
  
 const Detail  = ({languages}:{languages: any}) => {
-    const {continents} = useContinentContext()
+
+  const location= useLocation()
+  console.log(location.state)
+  // const recipe = location.state.item
+
+    const {continents } = useContinentContext()
     const newContinents = continents.map((continent)=> continent.countries)
     console.log(newContinents)
     const newName = continents.map((continent)=> continent.name)

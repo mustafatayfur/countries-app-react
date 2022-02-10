@@ -5,7 +5,8 @@ interface IDataProps {
     children: any
 }
 interface setLang {
-  setLanguage: (input: Language) => void
+  setLanguage1: (input: Language) => void
+  language1: Language[]
 }
 
 
@@ -35,7 +36,7 @@ const ContinentContextProvider = (
     { children }: IDataProps 
 ) => {
     const [continents, setContinents] = useState<Continent[]>([])
-    const [languages, setLanguages] = useState<Language>()
+    const [languages1, setLanguages1] = useState<setLang>()
 
     useEffect(()=> {
         fetch('https://countries.trevorblades.com/graphql', {
